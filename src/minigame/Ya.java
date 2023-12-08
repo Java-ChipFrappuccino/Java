@@ -1,5 +1,6 @@
 package minigame;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Ya {
@@ -42,7 +43,9 @@ public class Ya {
 		Scanner scanner = new Scanner(System.in);
 		int myChoice;
 		int random = (int)(Math.random()*3)+1;
-		System.out.println(random);
+		System.out.println(random+" ");
+		System.out.println(random+" ");
+		System.out.println(random+" ");
 		boolean onOff = true;
 
 		while (onOff == true) {
@@ -55,7 +58,7 @@ public class Ya {
 			System.out.print("선택: ");
 			myChoice = scanner.nextInt();
 			int cardChoice;
-			
+
 			switch (myChoice) {
 			case 1:
 				clover4();

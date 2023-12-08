@@ -27,7 +27,7 @@ public class MiniGame {
 
             System.out.println("게임을 골라주세요!\n");
             System.out.println("1.베스킨라빈스31 \n2.가위바위보");
-            System.out.println("3.같은카드 맞추기 \n4.게임종료");
+            System.out.println("3.뽁뽁이 터트리기 \n4.게임종료");
             System.out.print("선택: ");
             int select = scanner.nextInt();
             switch (select) {
@@ -181,6 +181,84 @@ public class MiniGame {
                     }
                 } break;
                 case 3: {
+                    System.out.println("______                 _ ");
+                    System.out.println("| ___ \\               | |");
+                    System.out.println("| |_/ /  ___   _ __   | |");
+                    System.out.println("|  __/  / _ \\ | '_ \\  | |");
+                    System.out.println("| |    | (_) || |_) | |_|");
+                    System.out.println("\\_|     \\___/ | .__/  (_)");
+                    System.out.println("              | |        ");
+                    System.out.println("              |_|");
+//______                 _
+//| ___ \               | |
+//| |_/ /  ___   _ __   | |
+//|  __/  / _ \ | '_ \  | |
+//| |    | (_) || |_) | |_|
+//\_|     \___/ | .__/  (_)
+//              | |
+//              |_|
+                            System.out.println();
+                    String[] pop = new String[24];
+//                    int myChoice;
+                    boolean onOff = true;
+
+                    for (int i = 0; i < pop.length; i++) {
+                        pop[i] = "⦿";
+                    }
+                    for (int i = 0; i < pop.length; i++) {
+                        System.out.print(pop[i]);
+                        if (i == 5) {
+                            System.out.println();
+                        }
+                        if (i == 11) {
+                            System.out.println();
+                        }
+                        if (i == 17) {
+                            System.out.println();
+                        }
+                    }
+
+                    System.out.println("\n\n아무키나 눌러주세요 >_ ...");
+
+                    while (onOff) {
+                        int count = 0;
+                        int random = (int) (Math.random() * 24);
+                        System.in.read();
+                        do {
+                            pop[random] = "❍";
+                            if (pop[random] == "❍") {
+                                pop[random] = "❍";
+                            }
+                        } while (!(pop[random] == "❍"));
+
+//            if (pop[random] == "❍") {
+//                pop[random] = "❍";
+//            }
+
+                        for (int i = 0; i < pop.length; i++) {
+                            if (pop[i] == "❍") {
+                                count++;
+                            }
+                            if (count == 24) {
+                                onOff = false;
+                                break;
+                            }
+                        }
+
+                        for (int i = 0; i < pop.length; i++) {
+                            System.out.print(pop[i]);
+                            if (i == 5 || i == 11 || i == 17) {
+                                System.out.println();
+                            }
+                        }
+                        System.out.println();
+                    }
+                    System.out.println("\n종료");
+
+                    System.out.println("아무키나 입력시 게임선택창으로 돌아갑니다");
+                    System.in.read();
+//                  onOff = false;
+                    break;
                 }
                 case 4: {
                     System.out.println("게임이 종료되었습니다 (-.-) (_._)");
