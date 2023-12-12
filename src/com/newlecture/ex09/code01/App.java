@@ -21,7 +21,7 @@ public class App {
             scan.close();
             fis.close();
         }
-//        System.out.println(count);
+        System.out.println(count);
 
         // 성적에 대한 배열(버퍼)을 준비
         Exam[] exams = new Exam[count];
@@ -58,28 +58,86 @@ public class App {
             scan.close();
             fis.close();
         }
-
-        // 위의 데이터들을 출력하기
+        // 사용자에게 정보 입력받기(전에 배열공간을 늘리기)
         {
+            Exam[] temp = new Exam[count + 1];
+            for (int i = 0; i < count; i++)
+                temp[i] = exams[i];
 
-            for (int i = 0; i < count; i++) {
-                Exam exam = exams[i];
-                String name = exam.name;
-                int kor = exam.kor;
-                int eng = exam.eng;
-                int math = exam.math;
-                int total = kor + eng + math;
-                double avg = total / 3.0;
-                korTotal += kor;
-                engTotal += eng;
-                mathTotal += math;
-                System.out.printf("이름: %s / 국어: %d , 영어: %d , 수학: %d / 총점: %d , 평균: %5.2f\n",
-                        name, kor, eng, math, total, avg);
+            exams = temp; // temp가 참조하는 객체를 exams도 참조하게 만듬 , exams가 참조하던 객체는 이름을 잃어버리므로 사라짐
+//        }
+//            for (Exam : exams[]) {
+//        }
             }
-            System.out.printf("총 인원수: %d / 국어 총점: %d , 영어 총점: %d , 수학 총점: %d\n",
-                    count, korTotal, engTotal, mathTotal);
-            System.out.printf("\t\t\t국어 평균: %5.2f , 영어 평균: %5.2f , 수학 평균: %5.2f"
-                    , korTotal / 5.0, engTotal / 5.0, mathTotal / 5.0);
+            // 사용자 정보 입력받기
+        {
+            Scanner scanner = new Scanner(System.in);
+            Exam exam = new Exam();
+            System.out.print("이름: ");
+            exam.name = scanner.nextLine();
+            System.out.print("국어성적: ");
+//            exam.kor = scanner.nextInt();
+            exam.kor = Integer.parseInt(scanner.nextLine());
+
+            System.out.print("영어성적: ");
+            exam.eng = scanner.nextInt();
+            System.out.print("수학성적: ");
+            exam.math = scanner.nextInt();
+//            exams[++count] = exam;
+            exams[count++] = exam;
+//            count++;
+            System.out.println(count);
+        }
+
+        System.out.println(exams[0].name);
+        System.out.println(exams[1].name);
+        System.out.println(exams[2].name);
+        System.out.println(exams[3].name);
+        System.out.println(exams[4].name);
+        System.out.println(exams[5].name);
+//        System.out.println(exams[6].name);
+            // 정렬하기
+            {
+                for (int i = 0; i < count; i++) {
+                    int total = exams[i].kor + exams[i].eng + exams[i].math;
+                    exams[i].avg = total / 3.0;
+                }
+                Exam temps;
+                for (int i = 0; i < count - 1; i++) {
+//                int total = exams[i].kor + exams[i].eng + exams[i].math;
+//                exams[i].avg = total / 3.0;
+                    for (int k = 0; k < count - (i + 1); k++) {
+                        if (exams[k].kor < exams[k + 1].kor) {
+                            temps = exams[k];
+                            exams[k] = exams[k + 1];
+                            exams[k + 1] = temps;
+                        }
+                    }
+                }
+
+            }
+
+            // 위의 데이터들을 출력하기
+            {
+
+                for (int i = 0; i < exams.length; i++) {
+                    Exam exam = exams[i];
+                    String name = exam.name;
+                    int kor = exam.kor;
+                    int eng = exam.eng;
+                    int math = exam.math;
+                    int total = kor + eng + math;
+                    double avg = exam.avg;
+                    korTotal += kor;
+                    engTotal += eng;
+                    mathTotal += math;
+                    System.out.printf("이름: %s / 국어: %d , 영어: %d , 수학: %d / 총점: %d , 평균: %5.2f\n",
+                            name, kor, eng, math, total, avg);
+                }
+                System.out.printf("총 인원수: %d / 국어 총점: %d , 영어 총점: %d , 수학 총점: %d\n",
+                        count, korTotal, engTotal, mathTotal);
+                System.out.printf("\t\t\t국어 평균: %5.2f , 영어 평균: %5.2f , 수학 평균: %5.2f"
+                        , korTotal / 5.0, engTotal / 5.0, mathTotal / 5.0);
+            }
         }
     }
-}

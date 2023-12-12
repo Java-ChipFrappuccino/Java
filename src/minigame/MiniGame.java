@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class MiniGame {
     public static void main(String[] args) throws IOException {
 //        boolean mainOnOff = true;
-        mainmenu :while (true) {
+        mainmenu:
+        while (true) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("==============================");
             System.out.println(" _____   ___  ___  ___ _____");
@@ -50,7 +51,8 @@ public class MiniGame {
                     int com;
 //                    boolean onOff = true;
 
-                    gameNo1:while (true) {
+                    gameNo1:
+                    while (true) {
                         System.out.println("\n==============");
                         System.out.println("1. 게임 시작");
                         System.out.println("2. 게임 종료");
@@ -124,7 +126,8 @@ public class MiniGame {
 //(_) (_)`\___/'`\____)(_) (_)   (____/`\____)(_)(____/(____/`\___/'(_)   (____/   | ,__/'`\__,_)| ,__/'`\____)(_)
 //                                                                                 | |           | |
 //                                                                                 (_)           (_)
-                   gameNo2: while (true) {
+                    gameNo2:
+                    while (true) {
                         int computer = (int) (Math.random() * 3) + 1;
 
                         System.out.println("========================================");
@@ -179,7 +182,8 @@ public class MiniGame {
                             System.out.println("잘못된 선택입니다.");
                         }
                     }
-                } break;
+                }
+                break;
                 case 3: {
                     System.out.println("______                 _ ");
                     System.out.println("| ___ \\               | |");
@@ -197,7 +201,7 @@ public class MiniGame {
 //\_|     \___/ | .__/  (_)
 //              | |
 //              |_|
-                            System.out.println();
+                    System.out.println();
                     String[] pop = new String[24];
 //                    int myChoice;
                     boolean onOff = true;
@@ -220,36 +224,47 @@ public class MiniGame {
 
                     System.out.println("\n\n아무키나 눌러주세요 >_ ...");
 
+                    int count = 0;
                     while (onOff) {
-                        int count = 0;
                         int random = (int) (Math.random() * 24);
                         System.in.read();
-                        do {
+
+                        if (pop[random].equals("⦿")) {
                             pop[random] = "❍";
-                            if (pop[random] == "❍") {
-                                pop[random] = "❍";
-                            }
-                        } while (!(pop[random] == "❍"));
-
-//            if (pop[random] == "❍") {
-//                pop[random] = "❍";
-//            }
-
-                        for (int i = 0; i < pop.length; i++) {
-                            if (pop[i] == "❍") {
-                                count++;
-                            }
-                            if (count == 24) {
-                                onOff = false;
-                                break;
+                        } else {
+                            while (true) {
+                                random = (int) (Math.random() * 24);
+                                if (pop[random].equals("⦿")) {
+                                    pop[random] = "❍";
+                                    break;
+                                }
                             }
                         }
 
+                        count++;
                         for (int i = 0; i < pop.length; i++) {
                             System.out.print(pop[i]);
+                        /*
+
+
+                        do {
+                            pop[random] = "❍";
+                        } while (!(pop[random].equals("❍")));
+                      for (int j = 0; i < pop.length; i++) {
+                            if (pop[i] == "❍") {
+                                count++;
+                            }
+                        }
+
+                        */
+
                             if (i == 5 || i == 11 || i == 17) {
                                 System.out.println();
                             }
+                        }
+                        if (count == 24) {
+                            onOff = false;
+                            break;
                         }
                         System.out.println();
                     }
