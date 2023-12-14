@@ -84,7 +84,8 @@ public class App {
             System.out.print("수학성적: ");
             exam.math = scanner.nextInt();
 //            exams[++count] = exam;
-            exams[count++] = exam;
+            exams[count++] = exam; // (배열크기)방을 늘릴때 카운트++ 하지 않은이유는
+                // 방을 늘린다고 무조건 값(성적)이 대입되는건 아니기 때문에 실질적으로 값이 대입될때 ++을 해준다
 //            count++;
             System.out.println(count);
         }
