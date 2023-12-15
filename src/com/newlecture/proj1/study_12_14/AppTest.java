@@ -26,11 +26,11 @@ public class AppTest {
     }
 
 
-    static void load(Exam[] exams , int count) throws IOException
+    static Exam[] load(int count) throws IOException
 
     // 성적　로드하기
     {
-//        exams = new Exam[count];
+        Exam[] exams = new Exam[count];
         FileInputStream fis = new FileInputStream("res/ex08.csv");
         Scanner scan = new Scanner(fis);
         if (scan.hasNextLine())
@@ -58,6 +58,7 @@ public class AppTest {
         fis.close();
 
         System.out.println();
+        return exams;
     }
 
     static Exam[] addStudent(Exam[] exams, int count)
@@ -71,6 +72,7 @@ public class AppTest {
 
         // temp가 참조하는 객체를 exams 에게도 참조하도록 수정
         exams = temp;
+        System.out.println(exams.length);
         return exams;
     }
 
@@ -143,11 +145,12 @@ public class AppTest {
     public static void main(String[] args) throws IOException {
 
         int count = countStudent();
-        Exam[] exams = new Exam[count];
-//        load(exams , count);
+        Exam[] exams = load(count);
         System.out.println(exams.length);
+//        System.out.println(exams.hashCode());
         addStudent(exams, count);
         System.out.println(exams.length);
+//        System.out.println(exams.hashCode());
 //        count = inputScore(exams, count);
 //        sortScore(exams, count);
 //        printScore(exams, count);
