@@ -10,9 +10,9 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         String test = scanner.nextLine();
         if (test.equals("시동")) {
-            car.engine.aOn();
+            car.engine.start();
         } else if (test.equals("앞으로")) {
-            car.wheel.wheelGo();
+            car.wheel.forward();
         }
     }
 }

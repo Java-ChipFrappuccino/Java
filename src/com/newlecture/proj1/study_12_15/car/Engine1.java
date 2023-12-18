@@ -9,7 +9,7 @@ public class Engine1 implements Engine{
         System.out.println("시동이 꺼졌습니다");
     }
 
-    public void overheat() {
+    public void overHeat() {
         System.out.println("과열로 폭발");
     }
 }

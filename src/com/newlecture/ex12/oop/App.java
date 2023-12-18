@@ -6,8 +6,8 @@ public class App {
 //        Omok[] omoks = makeOmokList();
 
         board.init();
-        board.deco();
         board.print();
+        board.deco();
 //        inputOmok(board, omoks);
         board.print();
     }

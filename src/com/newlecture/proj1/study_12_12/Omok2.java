@@ -15,12 +15,12 @@ public class Omok2 {
             Scanner scan = new Scanner(System.in);
 
             System.out.print("행의 개수를 입력하세요 : ");
-            HEIGHT = scan.nextInt();
+            HEIGHT = Integer.parseInt(scan.nextLine());
             System.out.print("열의 개수를 입력하세요 : ");
-            WIDTH = scan.nextInt();
+            WIDTH = Integer.parseInt(scan.nextLine());
 
             board = new char[WIDTH * HEIGHT];
-//            omoks = new Omok[WIDTH * HEIGHT];
+//            omoks = new Omok[HEIGHT * WIDTH];
         }
 
 // board 초기화
@@ -55,7 +55,6 @@ public class Omok2 {
                 else
                     board[count++] = '┼';
             }
-            System.out.println();
         }
 //        System.out.println(board[2]);
 
