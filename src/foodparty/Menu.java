@@ -147,7 +147,7 @@ public class Menu {
 //                    stores[storeNo - 1].number = 1; // ?
                             System.out.print("추가할 식당의 이름: ");
                             stores[storeNo - 1].name = scanner.nextLine();
-                            System.out.print("식당 분류 입력(한식,중식,일식,양식,디저트,): ");
+                            System.out.print("식당 분류 입력(한식,중식,일식,양식,디저트): ");
                             stores[storeNo - 1].category = scanner.nextLine();
                             stores[storeNo - 1].number = storeNo;
 
@@ -166,7 +166,7 @@ public class Menu {
 
                             System.out.print("추가할 식당의 이름: ");
                             stores[storeNo - 1].name = scanner.nextLine();
-                            System.out.print("식당 분류 입력(한식,중식,일식,양식,디저트,): ");
+                            System.out.print("식당 분류 입력(한식,중식,일식,양식,디저트): ");
                             stores[storeNo - 1].category = scanner.nextLine();
                             stores[storeNo - 1].number = storeNo;
                         }
