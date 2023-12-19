@@ -97,6 +97,7 @@ public class Menu {
                 System.out.print("│  메뉴소개~                      │\n");
                 System.out.print("└─────────────────────────────────┘\n");
                 stores[i].review.storeName = stores[i].name;
+                stores[i].review.count();
                 stores[i].review.Load();
                 stores[i].review.Print();
                 System.out.println("리뷰를 추가하려면 + 를 입력해주세요");
@@ -104,8 +105,10 @@ public class Menu {
                 choice = scanner.nextLine();
                 if (choice.equals("+")) {
                     stores[i].review.storeName = stores[i].name;
+                    stores[i].review.count();
                     stores[i].review.Write();
                     stores[i].review.Save();
+                    stores[i].review.count();
                     stores[i].review.Load();
                     stores[i].review.Print();
 
