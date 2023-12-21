@@ -15,38 +15,46 @@ public class Review {
     double rating;
     // ------------------------리뷰 갯수 확인-----------------------
     void count() throws IOException {
-        File storeDir = new File("res/" + storeName);
-        if (!storeDir.exists()) {
-            storeDir.mkdirs();
-        }
-        Path path = Paths.get("res/"+storeName);
+//        File storeDir = new File("res/" + storeName);
+//        if (!storeDir.exists()) {
+//            storeDir.mkdirs();
+//        }
+        Path path = Paths.get("res/store/"+storeName);
+
+//        System.out.println("스토어이름"+storeName);
 
         long fileCount = Files.list(path).count();
-        this.reviewCount = (int) fileCount-1;
+//        System.out.println("파일카운트 "+fileCount);
+        this.reviewCount = (int) fileCount;
+//        System.out.println("리뷰카운트 "+reviewCount);
+//        System.out.println(reviewCount); // 테스트 출력
     }
     // ------------------------리뷰 읽기----------------------------
     Review[] reviews;
-    void Load() throws IOException {
-        System.out.println(reviewCount);
+    double Load() throws IOException {
+        double avgStar = 0.0;
         if (reviewCount == 0) {
-            System.out.println("리뷰없음");
         } else {
             reviews = new Review[reviewCount];
             String line;
             String[] tokens;
             for (int i = 0; i < reviewCount; i++) {
-
-                FileInputStream fis = new FileInputStream("res/" + storeName + "/review" + (i + 1) + ".txt");
+                FileInputStream fis = new FileInputStream("res/store/" + storeName + "/review" + (i + 1) + ".txt");
                 Scanner scanner = new Scanner(fis);
                 line = scanner.nextLine();
                 tokens = line.split("@");
+                reviews[i] = new Review();
                 this.reviews[i].star = tokens[0];
                 this.reviews[i].name = tokens[1];
                 this.reviews[i].review = tokens[2];
+                avgStar += Double.parseDouble(tokens[0]);
+                avgStar = avgStar / reviewCount;
                 scanner.close();
                 fis.close();
             }
         }
+//        System.out.println(avgStar); // 테스트 출력
+        return avgStar;
     }
 
     // ------------------------리뷰 출력----------------------------
@@ -97,11 +105,11 @@ public class Review {
     // ------------------------리뷰 저장----------------------------
     void Save() throws IOException {
 //        this.count++;
-        File storeDir = new File("res/" + storeName);
+        File storeDir = new File("res/store/" + storeName);
         if (!storeDir.exists()) {
             storeDir.mkdirs();
         }
-        FileOutputStream fos = new FileOutputStream("res/"+storeName+"/review"+(this.reviewCount+1) +".txt");
+        FileOutputStream fos = new FileOutputStream("res/store/"+storeName+"/review"+(reviewCount+1)+".txt");
         PrintStream ps = new PrintStream(fos);
         ps.printf("%s@%s@%s@\n", this.star.substring(0, (this.star.indexOf(".") + 2)), this.name, this.review);
 
