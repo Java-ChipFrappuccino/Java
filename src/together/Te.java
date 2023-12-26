@@ -1,51 +1,59 @@
 package together;
 
-import java.io.IOException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 public class Te {
-    public static void main(String[] args) throws IOException {
-//        int[][] x = new int[3][4];
-//
-//        x[0][0] = 10;
-//        x[0][1] = 20;
-//        x[0][2] = 30;
-//        x[0][3] = x[0][0] + x[0][1] + x[0][2];
-//
-//        x[1][0] = 40;
-//        x[1][1] = 50;
-//        x[1][2] = 60;
-//        x[1][3] = x[1][0] + x[1][1] + x[1][2];
-//
-//        x[2][0] = x[0][0] + x[1][0];
-//        x[2][1] = x[0][1] + x[1][1];
-//        x[2][2] = x[0][2] + x[1][2];
-//        x[2][3] = x[2][0] + x[2][1] + x[2][2];
-//
-//        for (int y = 0; y < x.length; y++) {
-//            for (int z = 0; z < x[y].length; z++) {
-//                System.out.printf("%d ",x[y][z]);
-//            }
-//            System.out.println();
-//        }
+    public static void main(String[] args) {
+        int[][] k = new int[5][5];
+//        k[0] = new int[]{0, 1, 2, 3, 4};
+        int count = 0;
+        int count1 = 0;
+        // 입력하기
+        {
+            for (int y = 0; y < 5; y++) {
+                for (int x = 0; x < 5; x++) {
+                    if (y % 2 == 1) {
+                        k[y][4-x] = ++count;
+                    } else {
+                    k[y][x] = ++count;
+                    }
+                }
+            }
+        }
 
-        int storeNo = 2;
-//        for (int i = 0; i < storeNo; i++) {
-            // 디렉터리 목록을 가져옴
-            Path path = Paths.get("res/store");
-            DirectoryStream<Path> directoryStream = Files.newDirectoryStream(path, (Path entry) -> Files.isDirectory(entry));
+        // 출력하기
+        {
+            for (int y = 0; y < 5; y++) {
+                for (int x = 0; x < 5; x++) {
+                    System.out.printf("%d\t",k[y][x]);
+                }
+                System.out.println();
+            }
+        }
+        System.out.println("======================");
+        //입력하기
+        {
+            for (int y = 0; y < 5; y++) {
+                for (int x = 0; x < 5; x++) {
+                    if (y == 0) {
+                        k[y][x] = ++count1;
+                    } else if (x==4) {
+                        k[y][x] = ++count1;
+                    } else if (y == 4) {
+                        k[y][4-x] = ++count1;
+                    } else if (y > 0 && x == 0) {
+                        k[5-y][x] = ++count1;
+                    }
+                }
+            }
+        }
+        // 출력하기
+        {
+            for (int y = 0; y < 5; y++) {
+                for (int x = 0; x < 5; x++) {
+                    System.out.printf("%d\t",k[y][x]);
+                }
+                System.out.println();
+            }
+        }
 
-            // 디렉터리 목록을 순차적으로 탐색
-            Path entry = directoryStream.iterator().next();
-            // 디렉터리 이름을 출력
-            System.out.println( ". " + entry.getFileName().toString());
-//        }
-
-//        int reviewCount = (int) fileCount-1;
-//        System.out.println("리뷰카운트 "+reviewCount);
     }
 }
-
