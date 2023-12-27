@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: com.newlecture.ex14.reuse1.App
+Class-Path: com.newlecture.ex14.reuse1.Exam
+

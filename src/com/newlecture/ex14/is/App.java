@@ -13,5 +13,8 @@ public class App {
         newlecExam.setCom(90);
         System.out.println(newlecExam.total());
         System.out.println(newlecExam.avg());
+        
+       PaintFrame win = new PaintFrame();
+       win.setVisible(true);
     }
 }
